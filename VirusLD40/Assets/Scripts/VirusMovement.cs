@@ -37,8 +37,6 @@ public class VirusMovement : MonoBehaviour
         right = controls.Right;
     }
 
-
-
     void Awake ()
     {
         //test values
@@ -59,7 +57,6 @@ public class VirusMovement : MonoBehaviour
         if (Input.GetKey(left)) { moveVelocity += new Vector3(-speed, 0.0f); }
         rb.AddForce(moveVelocity);
     }
-
 
     /// <summary>
     /// Destroys red blood cells on collision and creates anew virus
