@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-sceneSetups: []
-=======
 sceneSetups:
-- path: Assets/Scenes/DavisTestScene.unity
+- path: Assets/Scenes/Matthew.unity
   isLoaded: 1
   isActive: 1
->>>>>>> 3514478ab74f9a0dac7bf3d332715fda41cab263

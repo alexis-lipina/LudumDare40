@@ -78,10 +78,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <Compile Include="Assets\Scripts\Cell2.cs" />
-=======
->>>>>>> 3514478ab74f9a0dac7bf3d332715fda41cab263
     <Compile Include="Assets\Scripts\CustomKeyBinding.cs" />
     <Compile Include="Assets\Scripts\VirusManager.cs" />
     <Compile Include="Assets\Scripts\VirusMovement.cs" />
