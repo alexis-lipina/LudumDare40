@@ -63,7 +63,7 @@ public class VirusMovement : MonoBehaviour
     /// </summary>
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //if not colliding witha a red blood cell, dp nothing
+        //if not colliding with a red blood cell, do nothing
         if(collision.gameObject.tag != "RedBloodCell")
         {
             return;

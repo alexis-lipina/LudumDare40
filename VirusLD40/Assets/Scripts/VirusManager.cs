@@ -72,7 +72,7 @@ public class VirusManager : MonoBehaviour
         {
             viruses.Add(Instantiate(virusPrefab, position, Quaternion.identity).GetComponent<VirusMovement>());
             viruses[viruses.Count - 1].GetComponentInChildren<SpriteRenderer>().sprite = possibleVirusSprites[possibleVirusSprites.Count - 1].sprite;
-            StartCoroutine("EndLevel");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("DavisTestScene"); //*******************************************************************Change to you win screen
             return;
         }
 
@@ -110,39 +110,45 @@ public class VirusManager : MonoBehaviour
     /// Sets the control binding for a destroyed virus to "not in use"
     /// </summary>
     /// <param name="destroyed">The virus that was destroyed</param>
-    public void VirusDestroyed(VirusMovement destroyed)
+    public void VirusDestroyed(VirusMovement killedCell)
     {
+        //removes destroyed viruses
+        viruses.Remove(killedCell);
+
+        //ends game if player is out of viruses
+        if(viruses.Count <= 0)
+        {
+            Destroy(killedCell.gameObject);
+            UnityEngine.SceneManagement.SceneManager.LoadScene("DaneTest"); //************************************Change to game over screen
+            return;
+        }
+
         //at this point the player has won so don't mess with it
         if(viruses.Count > possibleControlSchemes.Count)
         {
             return;
         }
 
-        CustomKeyBinding lostBinding = destroyed.Controls;
-
-        int controlIndex = -1;
+        //finds the binding that is no longer in use and marks it as such
         for (int i = 0; i < possibleControlSchemes.Count; i++)
         {
-            if (possibleControlSchemes[i] == lostBinding)
+            if (possibleControlSchemes[i] == killedCell.Controls)
             {
-                controlIndex = i;
+                possibleControlSchemes[i].InUse = false;
                 i = possibleControlSchemes.Count;
             }
         }
 
-        possibleControlSchemes[controlIndex].InUse = false;
-    }
+        //finds the sprite that is no longer in use and marks it as such
+        for(int i = 0; i < possibleVirusSprites.Count; i++)
+        {
+            if(possibleVirusSprites[i].sprite == killedCell.GetComponentInChildren<SpriteRenderer>().sprite)
+            {
+                possibleVirusSprites[i].inUse = false;
+                i = possibleVirusSprites.Count;
+            }
+        }
 
-    /// <summary>
-    /// Ends the level and returns to main menu
-    /// </summary>
-    private IEnumerator EndLevel()
-    {
-        //display win message
-        Debug.Log("You win!");
-
-        //wait for any input and then load the appropriate scene
-        while (!Input.anyKeyDown) { yield return null; }
-        UnityEngine.SceneManagement.SceneManager.LoadScene("DavisTestScene"); //************************************************************Change to main menu if we ever make one
+        Destroy(killedCell.gameObject);
     }
 }

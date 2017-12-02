@@ -51,4 +51,18 @@ public class WhiteBloodCell : MonoBehaviour
     }
 
 
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //if not colliding with a virus, do nothing
+        if(collision.gameObject.tag != "Virus")
+        {
+            return;
+        }
+
+        //destroy the virus and tell the virus manager about it
+        VirusMovement killedCell = collision.gameObject.GetComponent<VirusMovement>();
+        VirusManager manager = GameObject.FindGameObjectWithTag("VirusManager").GetComponent<VirusManager>();
+        manager.VirusDestroyed(killedCell);
+    }
 }
