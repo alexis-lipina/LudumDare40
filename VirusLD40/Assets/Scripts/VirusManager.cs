@@ -24,7 +24,17 @@ public class VirusManager : MonoBehaviour
         new CustomKeyBinding(KeyCode.F8, KeyCode.Alpha0, KeyCode.Alpha9, KeyCode.Minus, false),
         new CustomKeyBinding(KeyCode.Home, KeyCode.End, KeyCode.Delete, KeyCode.PageDown, false)
     };
-    
+
+
+    [System.Serializable]
+    private class ListWrapper
+    {
+        public Sprite sprite;
+        public bool inUse;
+    }
+
+    [SerializeField] List<ListWrapper> possibleVirusSprites;
+
     List<VirusMovement> viruses;
 
     [SerializeField] GameObject virusPrefab;
@@ -34,6 +44,20 @@ public class VirusManager : MonoBehaviour
     {
         viruses = new List<VirusMovement>();
         viruses.Add(Instantiate(virusPrefab).GetComponent<VirusMovement>());
+
+        //sets color to an unused color
+        Sprite sprite = null;
+        for(int i = 0; i < possibleVirusSprites.Count; i++)
+        {
+            if(possibleVirusSprites[i].inUse == false)
+            {
+                sprite = possibleVirusSprites[i].sprite;
+                possibleVirusSprites[i].inUse = true;
+                i = possibleVirusSprites.Count;
+            }
+        }
+        viruses[0].GetComponentInChildren<SpriteRenderer>().sprite = sprite;
+
         viruses[0].Init(possibleControlSchemes[0]);
         possibleControlSchemes[0].InUse = true;
     }
@@ -45,6 +69,7 @@ public class VirusManager : MonoBehaviour
     {
         viruses.Add(Instantiate(virusPrefab, position, Quaternion.identity).GetComponent<VirusMovement>());
 
+        //sets control scheme to first unused control scheme
         int controlIndex = -1; //**********************************************************************************************This will break if we run out of control schemes!!
         for(int i = 0; i < possibleControlSchemes.Count; i++)
         {
@@ -54,6 +79,20 @@ public class VirusManager : MonoBehaviour
                 i = possibleControlSchemes.Count;
             }
         }
+
+        //sets color to an unused color
+        Sprite sprite = null;
+        for (int i = 0; i < possibleVirusSprites.Count; i++)
+        {
+            if (possibleVirusSprites[i].inUse == false)
+            {
+                sprite = possibleVirusSprites[i].sprite;
+                possibleVirusSprites[i].inUse = true;
+                i = possibleVirusSprites.Count;
+            }
+        }
+        viruses[viruses.Count - 1].GetComponentInChildren<SpriteRenderer>().sprite = sprite;
+
 
         viruses[viruses.Count - 1].Init(possibleControlSchemes[controlIndex]);
         possibleControlSchemes[controlIndex].InUse = true;
