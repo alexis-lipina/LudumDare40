@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
 - path: Assets/Scenes/DaneTest.unity
-=======
-- path: Assets/Scenes/DavisTestScene.unity
->>>>>>> 3514478ab74f9a0dac7bf3d332715fda41cab263
   isLoaded: 1
   isActive: 1
