@@ -2,11 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-<<<<<<< HEAD
-public class VirusMovement : Cell2
-=======
 public class VirusMovement : MonoBehaviour
->>>>>>> e8b6ca8b770c45e5f53c4aba3f5fab4cdfed1498
 {
 
     [SerializeField] private float speed;
@@ -19,6 +15,8 @@ public class VirusMovement : MonoBehaviour
     private KeyCode down;
     private KeyCode right;
     private KeyCode  left;
+
+    protected Rigidbody2D rb;
 
     /// <summary>
     /// Gets the control scheme for this virus
@@ -52,9 +50,8 @@ public class VirusMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 	}
 
-	protected override void FixedUpdate ()
+	void FixedUpdate ()
     {
-        base.FixedUpdate();
         Vector3 moveVelocity = new Vector3();
         if (Input.GetKey(up)) { moveVelocity += new Vector3(0.0f, speed); }
         if (Input.GetKey(down)) { moveVelocity += new Vector3(0.0f, -speed); }
