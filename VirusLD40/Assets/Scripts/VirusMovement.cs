@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+<<<<<<< HEAD
+public class VirusMovement : Cell2
+=======
 public class VirusMovement : MonoBehaviour
+>>>>>>> e8b6ca8b770c45e5f53c4aba3f5fab4cdfed1498
 {
 
     [SerializeField] private float speed;
