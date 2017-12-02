@@ -17,7 +17,10 @@ public class wall : MonoBehaviour {
         //find the distance between virus position and wall
         if (coll.gameObject.tag == "RedBloodCell")
         {
-            
+            Rigidbody2D rb = coll.gameObject.GetComponent<Rigidbody2D>();
+            Debug.Log(Vector3.Cross(coll.gameObject.transform.position,transform.up));
+            Debug.Log(Vector3.Cross(coll.gameObject.transform.position, transform.up).magnitude);
+            //rb.AddForce(transform.right * Vector3.Cross(coll.gameObject.transform.position,transform.up));
         }
 
         //increase the Force Magnitude as viruis gets closer to the wall
