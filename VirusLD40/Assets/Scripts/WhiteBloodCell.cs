@@ -33,7 +33,6 @@ public class WhiteBloodCell : MonoBehaviour
     {
         if(tracking != null)
         {
-            Debug.Log("Tracking");
             //gets the direction of the vector to move towards player
             Vector2 force = tracking.transform.position - transform.position;
             //set the magnitude of vector to one
