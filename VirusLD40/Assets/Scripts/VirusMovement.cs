@@ -37,8 +37,6 @@ public class VirusMovement : MonoBehaviour
         right = controls.Right;
     }
 
-
-
     void Awake ()
     {
         //test values
@@ -60,13 +58,12 @@ public class VirusMovement : MonoBehaviour
         rb.AddForce(moveVelocity);
     }
 
-
     /// <summary>
     /// Destroys red blood cells on collision and creates anew virus
     /// </summary>
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //if not colliding witha a red blood cell, dp nothing
+        //if not colliding with a red blood cell, do nothing
         if(collision.gameObject.tag != "RedBloodCell")
         {
             return;
