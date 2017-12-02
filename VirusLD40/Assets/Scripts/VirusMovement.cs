@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VirusMovement : MonoBehaviour {
+public class VirusMovement : Cell
+{
 
     [SerializeField] private float speed;
 
@@ -49,12 +50,33 @@ public class VirusMovement : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
 	}
 
-	void FixedUpdate () {
+	void FixedUpdate ()
+    {
+        //base.FixedUpdate();
         Vector3 moveVelocity = new Vector3();
         if (Input.GetKey(up)) { moveVelocity += new Vector3(0.0f, speed); }
         if (Input.GetKey(down)) { moveVelocity += new Vector3(0.0f, -speed); }
         if (Input.GetKey(right)) { moveVelocity += new Vector3(speed, 0.0f); }
         if (Input.GetKey(left)) { moveVelocity += new Vector3(-speed, 0.0f); }
         rb.AddForce(moveVelocity);
+    }
+
+
+    /// <summary>
+    /// Destroys red blood cells on collision and creates anew virus
+    /// </summary>
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //if not colliding witha a red blood cell, dp nothing
+        if(collision.gameObject.tag != "RedBloodCell")
+        {
+            return;
+        }
+
+        //destroy the red blood cell and create a new virus
+        Vector3 pos = collision.gameObject.transform.position;
+        Destroy(collision.gameObject);
+        VirusManager manager = GameObject.FindGameObjectWithTag("VirusManager").GetComponent<VirusManager>();
+        manager.CreateVirus(pos);
     }
 }
