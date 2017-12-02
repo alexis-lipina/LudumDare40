@@ -49,4 +49,6 @@ public class WhiteBloodCell : MonoBehaviour
     {
         return Mathf.Sqrt(Mathf.Pow(virus.x - self.x, 2) + Mathf.Pow(virus.y - self.y, 2));
     }
+
+
 }
