@@ -33,7 +33,7 @@ public class VirusManager : MonoBehaviour
     private void Start()
     {
         viruses = new List<VirusMovement>();
-        viruses.Add(GameObject.FindGameObjectWithTag("InitialVirus").GetComponent<VirusMovement>());
+        viruses.Add(Instantiate(virusPrefab).GetComponent<VirusMovement>());
         viruses[0].Init(possibleControlSchemes[0]);
         possibleControlSchemes[0].InUse = true;
     }
@@ -41,9 +41,9 @@ public class VirusManager : MonoBehaviour
     /// <summary>
     /// Creates a new virus
     /// </summary>
-    public void CreateVirus()
+    public void CreateVirus(Vector3 position)
     {
-        viruses.Add(Instantiate(virusPrefab).GetComponent<VirusMovement>());
+        viruses.Add(Instantiate(virusPrefab, position, Quaternion.identity).GetComponent<VirusMovement>());
 
         int controlIndex = -1; //**********************************************************************************************This will break if we run out of control schemes!!
         for(int i = 0; i < possibleControlSchemes.Count; i++)

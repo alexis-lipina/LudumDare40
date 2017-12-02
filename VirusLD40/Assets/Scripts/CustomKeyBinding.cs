@@ -34,7 +34,7 @@ public class CustomKeyBinding
     /// <summary>
     /// Gets and sets if this keybinding is currently being used by a virus
     /// </summary>
-    public bool InUse { get { return InUse; } set { InUse = value; } }
+    public bool InUse { get { return inUse; } set { inUse = value; } }
 
     public CustomKeyBinding(KeyCode up, KeyCode down, KeyCode left, KeyCode right, bool inUse)
     {
