@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/DaneTest.unity
+- path: Assets/Scenes/DavisTestScene.unity
   isLoaded: 1
   isActive: 1

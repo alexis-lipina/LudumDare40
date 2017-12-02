@@ -7,6 +7,8 @@ using UnityEngine;
 /// </summary>
 public class VirusManager : MonoBehaviour
 {
+    private int score;
+
     //a list of all possible virus control schemes
     List<CustomKeyBinding> possibleControlSchemes = new List<CustomKeyBinding>
     {
@@ -37,9 +39,13 @@ public class VirusManager : MonoBehaviour
 
     [SerializeField] GameObject virusPrefab;
 
+    public int Score { get { return score; } }
+
 
     private void Start()
     {
+        score = 0;
+
         //creates starting virus
         viruses = new List<VirusMovement>();
         viruses.Add(Instantiate(virusPrefab).GetComponent<VirusMovement>());
@@ -62,6 +68,11 @@ public class VirusManager : MonoBehaviour
         possibleControlSchemes[0].InUse = true;
     }
 
+    private void Update()
+    {
+        score += viruses.Count;
+    }
+
     /// <summary>
     /// Creates a new virus
     /// </summary>
@@ -72,7 +83,7 @@ public class VirusManager : MonoBehaviour
         {
             viruses.Add(Instantiate(virusPrefab, position, Quaternion.identity).GetComponent<VirusMovement>());
             viruses[viruses.Count - 1].GetComponentInChildren<SpriteRenderer>().sprite = possibleVirusSprites[possibleVirusSprites.Count - 1].sprite;
-            UnityEngine.SceneManagement.SceneManager.LoadScene("DavisTestScene"); //*******************************************************************Change to you win screen
+            UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu"); //*******************************************************************Change to you win screen
             return;
         }
 
@@ -119,12 +130,16 @@ public class VirusManager : MonoBehaviour
         if(viruses.Count <= 0)
         {
             Destroy(killedCell.gameObject);
-            UnityEngine.SceneManagement.SceneManager.LoadScene("DaneTest"); //************************************Change to game over screen
+            UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu"); //************************************Change to game over screen
             return;
         }
 
+        //lose points when viruses are destroyed
+        score -= score / ((viruses.Count + 1) * 2);
+
+
         //at this point the player has won so don't mess with it
-        if(viruses.Count > possibleControlSchemes.Count)
+        if (viruses.Count > possibleControlSchemes.Count)
         {
             return;
         }
