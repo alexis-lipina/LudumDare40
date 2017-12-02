@@ -82,6 +82,7 @@
     <Compile Include="Assets\Scripts\VirusManager.cs" />
     <Compile Include="Assets\Scripts\VirusMovement.cs" />
     <Compile Include="Assets\Scripts\WallBehavior.cs" />
+    <Compile Include="Assets\Scripts\WhiteBloodCell.cs" />
     <Compile Include="Assets\Scripts\wall.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
