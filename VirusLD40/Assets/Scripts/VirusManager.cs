@@ -67,10 +67,19 @@ public class VirusManager : MonoBehaviour
     /// </summary>
     public void CreateVirus(Vector3 position)
     {
+        //checks if there are enough viruses to instantly end the game
+        if (viruses.Count == possibleControlSchemes.Count)
+        {
+            viruses.Add(Instantiate(virusPrefab, position, Quaternion.identity).GetComponent<VirusMovement>());
+            viruses[viruses.Count - 1].GetComponentInChildren<SpriteRenderer>().sprite = possibleVirusSprites[possibleVirusSprites.Count - 1].sprite;
+            StartCoroutine("EndLevel");
+            return;
+        }
+
         viruses.Add(Instantiate(virusPrefab, position, Quaternion.identity).GetComponent<VirusMovement>());
 
         //sets control scheme to first unused control scheme
-        int controlIndex = -1; //**********************************************************************************************This will break if we run out of control schemes!!
+        int controlIndex = - 1;
         for(int i = 0; i < possibleControlSchemes.Count; i++)
         {
             if(possibleControlSchemes[i].InUse == false)
@@ -117,5 +126,28 @@ public class VirusManager : MonoBehaviour
         }
 
         possibleControlSchemes[controlIndex].InUse = false;
+    }
+
+    /// <summary>
+    /// Ends the level and returns to main menu
+    /// </summary>
+    private IEnumerator EndLevel()
+    {
+        //display win message
+        Debug.Log("You win!");
+
+        while (!Input.anyKeyDown) { yield return null; }
+
+        //bool waiting = true;
+        //while (waiting)
+        //{
+        //    if (Input.anyKeyDown)
+        //    {
+        //        waiting = false;
+        //    }
+        //    yield return null;
+        //}
+
+        UnityEngine.SceneManagement.SceneManager.LoadScene("DavisTestScene");
     }
 }
