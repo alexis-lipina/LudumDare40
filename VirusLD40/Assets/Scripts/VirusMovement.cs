@@ -16,8 +16,6 @@ public class VirusMovement : MonoBehaviour
     private KeyCode right;
     private KeyCode  left;
 
-    Rigidbody2D rb;
-
     /// <summary>
     /// Gets the control scheme for this virus
     /// </summary>
@@ -50,9 +48,9 @@ public class VirusMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 	}
 
-	void FixedUpdate ()
+	protected override void FixedUpdate ()
     {
-        //base.FixedUpdate();
+        base.FixedUpdate();
         Vector3 moveVelocity = new Vector3();
         if (Input.GetKey(up)) { moveVelocity += new Vector3(0.0f, speed); }
         if (Input.GetKey(down)) { moveVelocity += new Vector3(0.0f, -speed); }
