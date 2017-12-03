@@ -14,6 +14,11 @@ public class ScreenWrapper : MonoBehaviour
     /// </summary>
     private void OnTriggerExit2D(Collider2D other)
     {
+        if (other.isTrigger)
+        {
+            return;
+        }
+        
         float x = other.gameObject.transform.position.x;
         float y = other.gameObject.transform.position.y;
         float z = other.gameObject.transform.position.z;
