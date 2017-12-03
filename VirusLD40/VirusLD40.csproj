@@ -87,7 +87,7 @@
     <Compile Include="Assets\Scripts\VirusMovement.cs" />
     <Compile Include="Assets\Scripts\WallBehavior.cs" />
     <Compile Include="Assets\Scripts\WhiteBloodCell.cs" />
-    <Compile Include="Assets\Scripts\wall.cs" />
+    <Compile Include="Assets\Scripts\WhiteSpawner.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
