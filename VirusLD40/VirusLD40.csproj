@@ -81,6 +81,7 @@
     <Compile Include="Assets\Scripts\AttractCholesterol.cs" />
     <Compile Include="Assets\Scripts\CustomKeyBinding.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
+    <Compile Include="Assets\Scripts\MenuButton.cs" />
     <Compile Include="Assets\Scripts\ScoreManager.cs" />
     <Compile Include="Assets\Scripts\ScreenWrapper.cs" />
     <Compile Include="Assets\Scripts\Spawner.cs" />

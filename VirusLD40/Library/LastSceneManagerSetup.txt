@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/MainMenu.unity
+=======
+- path: Assets/Scenes/DavisTestScene.unity
+>>>>>>> 492df8ce5aed3950c5c41c260cbe8cde41525d54
   isLoaded: 1
   isActive: 1
