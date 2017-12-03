@@ -69,7 +69,7 @@ public class VirusManager : MonoBehaviour
             if (possibleVirusSprites[i].inUse == false)
             {
                 viruses[i].Controls = possibleControlSchemes[i];
-                possibleVirusSprites[i].inUse = true;
+                possibleControlSchemes[i].InUse = true;
             }
         }
 
@@ -182,7 +182,7 @@ public class VirusManager : MonoBehaviour
         List<bool> usedControlIndices = new List<bool>();
         for (int i = 0; i < possibleControlSchemes.Count; i++)
         {
-            usedControlIndices.Add(possibleControlSchemes[i].InUse);
+            usedControlIndices.Add(viruses[i].gameObject.activeInHierarchy);
         }
         uiManager.UpdateUI(usedControlIndices);
     }
