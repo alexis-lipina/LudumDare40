@@ -4,40 +4,17 @@ using UnityEngine;
 
 public class AttractCholesterol : MonoBehaviour
 {
-    [SerializeField] private float attractiveForce;
-    private Rigidbody2D rb;
-    private Vector3 attraction = Vector3.zero;
+    [SerializeField] private float frequency;
+    [SerializeField] private float damping;
 
-    //for other cholesteral cells to check
-    public Vector3 Attraction { get {return attraction; } }
-
-    private void Start()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        rb = GetComponent<Rigidbody2D>();
-    }
-
-    private void OnCollisionEnter2D(Collision2D coll)
-    {
-        switch (coll.gameObject.tag)
+        if (collision.gameObject.tag == "Cholesterol" || collision.gameObject.tag == "Wall")
         {
-            case "RightWall":
-                attraction = coll.transform.right;
-                break;
-            case "LeftWall":
-                attraction = coll.transform.right * -1;
-                
-                break;
-            case "Cholesterol":
-                AttractCholesterol script = coll.gameObject.GetComponent<AttractCholesterol>();
-                attraction = script.Attraction;
-                break;
-        }
-    }
-    private void FixedUpdate()
-    {
-        if(attraction != Vector3.zero)
-        {
-            rb.AddForce(attraction * attractiveForce);
+            FixedJoint2D joint = gameObject.AddComponent<FixedJoint2D>();
+            joint.connectedBody = collision.rigidbody;
+            joint.dampingRatio = damping;
+            joint.frequency = frequency;
         }
     }
 }
