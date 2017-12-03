@@ -7,6 +7,9 @@ using UnityEngine;
 /// </summary>
 public class VirusManager : MonoBehaviour
 {
+    [SerializeField] private List<Transform> spawners;
+    [SerializeField] private GameObject redBloodCellPrefab;
+
     private int score;
 
     //a list of all possible virus control schemes
@@ -188,5 +191,13 @@ public class VirusManager : MonoBehaviour
         }
 
         Destroy(killedCell.gameObject);
+
+        if (spawners.Count != 0)
+        {
+            //spawn a new red blood cell
+            System.Random rand = new System.Random();
+            Instantiate(redBloodCellPrefab, spawners[rand.Next(spawners.Count - 1)]);
+        }
+        
     }
 }
