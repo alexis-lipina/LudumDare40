@@ -42,8 +42,8 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 679, y: 342}
-  m_MaxSize: {x: 12004, y: 8042}
+  m_MinSize: {x: 683, y: 492}
+  m_MaxSize: {x: 14004, y: 14042}
   vertical: 0
   controlID: 9
 --- !u!114 &3
@@ -114,17 +114,13 @@ MonoBehaviour:
     y: 573
     width: 1531
     height: 374
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 18}
+  m_MinSize: {x: 232, y: 271}
+  m_MaxSize: {x: 10002, y: 10021}
+  m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
   - {fileID: 18}
-<<<<<<< HEAD
-  m_Selected: 1
-=======
   m_Selected: 0
->>>>>>> d2457024442406f87d9546894d768d1431f64b70
   m_LastSelected: 0
 --- !u!114 &6
 MonoBehaviour:
@@ -210,13 +206,8 @@ MonoBehaviour:
     y: 0
     width: 1531
     height: 947
-<<<<<<< HEAD
-  m_MinSize: {x: 404, y: 342}
-  m_MaxSize: {x: 8004, y: 8042}
-=======
-  m_MinSize: {x: 404, y: 492}
+  m_MinSize: {x: 406, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
->>>>>>> d2457024442406f87d9546894d768d1431f64b70
   vertical: 1
   controlID: 10
 --- !u!114 &10
@@ -239,8 +230,8 @@ MonoBehaviour:
     y: 0
     width: 1531
     height: 573
-  m_MinSize: {x: 404, y: 221}
-  m_MaxSize: {x: 8004, y: 4021}
+  m_MinSize: {x: 406, y: 221}
+  m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
   controlID: 11
 --- !u!114 &11
@@ -261,8 +252,8 @@ MonoBehaviour:
     y: 0
     width: 1152
     height: 573
-  m_MinSize: {x: 204, y: 221}
-  m_MaxSize: {x: 4004, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -339,23 +330,13 @@ MonoBehaviour:
   m_LastFolders:
   - Assets/Scripts
   m_LastFoldersGridSize: -1
-<<<<<<< HEAD
-  m_LastProjectPath: Z:\IGMProfile\Desktop\LudumDare40\VirusLD40
-  m_IsLocked: 0
-  m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 8e270000
-    m_LastClickedID: 10126
-    m_ExpandedIDs: 00000000a0260000c426000000ca9a3bffffff7f
-=======
   m_LastProjectPath: Z:\IGMProfile\Desktop\repos\LudumDare40\VirusLD40
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 1c260000
-    m_LastClickedID: 9756
-    m_ExpandedIDs: 00000000d82400000025000000ca9a3bffffff7f
->>>>>>> d2457024442406f87d9546894d768d1431f64b70
+    m_SelectedIDs: 0e260000
+    m_LastClickedID: 9742
+    m_ExpandedIDs: 00000000ca240000f224000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -383,11 +364,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-<<<<<<< HEAD
-    m_ExpandedIDs: 00000000a0260000c4260000
-=======
-    m_ExpandedIDs: 00000000d824000000250000
->>>>>>> d2457024442406f87d9546894d768d1431f64b70
+    m_ExpandedIDs: 00000000ca240000f2240000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -412,9 +389,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 08060000
-    m_LastClickedInstanceID: 1544
-    m_HadKeyboardFocusLastEvent: 1
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -505,34 +482,26 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-<<<<<<< HEAD
-    m_ExpandedIDs: 6ae3ffffd4e3ffff76e5ffff26e8ffff0afaffff00000000f82800006a290000ba290000
-=======
-    m_ExpandedIDs: 9e6affffb8d5ffff12deffff3cf2ffff36faffffdafbffff00000000182800005e2900000a400000
->>>>>>> d2457024442406f87d9546894d768d1431f64b70
+    m_ExpandedIDs: e2fbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Canvas
-      m_OriginalName: Canvas
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 10202
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 4}
     m_SearchString: 
   m_ExpandedScenes:
-<<<<<<< HEAD
-  - DavisTestScene
-=======
   - HeartLevel
->>>>>>> d2457024442406f87d9546894d768d1431f64b70
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
@@ -563,20 +532,14 @@ MonoBehaviour:
     width: 1148
     height: 552
   m_SceneLighting: 1
-  lastFramingTime: 86.94685171905813
+  lastFramingTime: 0
   m_2DMode: 1
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-<<<<<<< HEAD
-    m_Target: {x: 574, y: 267.5, z: 0}
-    speed: 2
-    m_Value: {x: 574, y: 267.5, z: 0}
-=======
     m_Target: {x: -1.7664611, y: -4.3406696, z: 0}
     speed: 2
     m_Value: {x: -1.7664611, y: -4.3406696, z: 0}
->>>>>>> d2457024442406f87d9546894d768d1431f64b70
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -603,15 +566,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-<<<<<<< HEAD
-    m_Target: 2089.7947
-    speed: 2
-    m_Value: 2089.7947
-=======
     m_Target: 353.08856
     speed: 2
     m_Value: 353.08856
->>>>>>> d2457024442406f87d9546894d768d1431f64b70
   m_Ortho:
     m_Target: 1
     speed: 2
