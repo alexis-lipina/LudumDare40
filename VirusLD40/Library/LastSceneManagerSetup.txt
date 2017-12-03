@@ -1,9 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/ItsYaBoiMarkAndHisBeautifulUITestingScene.unity
-=======
-<<<<<<< HEAD
-sceneSetups:
-- path: Assets/Scenes/HeartLevel.unity
->>>>>>> eac2f3b6d2ca30d57f6a5d4281fa27be2220f448
+- path: Assets/Scenes/DavisTestScene.unity
   isLoaded: 1
   isActive: 1
