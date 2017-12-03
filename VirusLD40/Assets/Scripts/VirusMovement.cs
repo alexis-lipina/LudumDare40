@@ -21,7 +21,7 @@ public class VirusMovement : MonoBehaviour
     /// <summary>
     /// Gets the control scheme for this virus
     /// </summary>
-    public CustomKeyBinding Controls { get { return controls; } }
+    public CustomKeyBinding Controls { get { return controls; } set { controls = value; } }
 
     /// <summary>
     /// Sets up the controls for this virus
