@@ -1,4 +1,24 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/Matthew.unity
+=======
+<<<<<<< HEAD
+- path: Assets/Scenes/Matthew.unity
+=======
+<<<<<<< HEAD
+- path: Assets/Scenes/HeartLevel.unity
+=======
+<<<<<<< HEAD
+- path: Assets/Scenes/DaneTest.unity
+=======
+<<<<<<< HEAD
+- path: Assets/Scenes/Matthew.unity
+=======
+- path: Assets/Scenes/HeartLevel.unity
+>>>>>>> b0d408e24e3974f585c2c681751a1d7069a39d53
+>>>>>>> ff536b3674a2d545f7e7de118c490e17f11212b2
+>>>>>>> 9caf46639d147b4f9fc4cb35c8657f501a234c14
+>>>>>>> 7614801f9117cfa343be8b6ad69068904f5b30ad
+>>>>>>> ddb2532713089bf318d0adabd0f2a7ebb3e3ef53
   isLoaded: 1
   isActive: 1
