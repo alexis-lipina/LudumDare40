@@ -20,9 +20,21 @@ public class WhiteBloodCell : MonoBehaviour
         {
             //first virus tracking
             if (tracking == null) { tracking = coll.gameObject; }
-            Debug.Log("VIRUS DETECTED");
             //if another virus gets closer, track that one instead
-            if (Distance(tracking.transform.position, transform.position) < Distance(coll.gameObject.transform.position, transform.position))
+            if (Distance(tracking.transform.position, transform.position) > Distance(coll.gameObject.transform.position, transform.position))
+            {
+                tracking = coll.gameObject;
+            }
+        }
+    }
+    void OnTriggerStay2D(Collider2D coll)
+    {
+        if (coll.gameObject.tag == "Virus")
+        {
+            //first virus tracking
+            if (tracking == null) { tracking = coll.gameObject; }
+            //if another virus gets closer, track that one instead
+            if (Distance(tracking.transform.position, transform.position) > Distance(coll.gameObject.transform.position, transform.position))
             {
                 tracking = coll.gameObject;
             }
@@ -34,13 +46,16 @@ public class WhiteBloodCell : MonoBehaviour
         if(tracking != null)
         {
             //gets the direction of the vector to move towards player
-            Vector2 force = tracking.transform.position - transform.position;
+            Vector3 force = tracking.transform.position - transform.position;
+            Debug.DrawLine(tracking.transform.position, transform.position, Color.red);
             //set the magnitude of vector to one
+            Debug.DrawLine(transform.position, transform.position + force,Color.blue);
             float magnitude = force.magnitude;
             force.x = force.x / magnitude;
             force.y = force.y / magnitude;
             //apply force
             rb.AddForce(force * speed);
+            Debug.DrawLine(transform.position, transform.position + force,Color.green);
         }
     }
 
@@ -63,5 +78,8 @@ public class WhiteBloodCell : MonoBehaviour
         VirusMovement killedCell = collision.gameObject.GetComponent<VirusMovement>();
         VirusManager manager = GameObject.FindGameObjectWithTag("VirusManager").GetComponent<VirusManager>();
         manager.VirusDestroyed(killedCell);
+
+        tracking = null;
+
     }
 }

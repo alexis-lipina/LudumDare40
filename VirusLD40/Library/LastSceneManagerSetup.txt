@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/Matthew.unity
+=======
+- path: Assets/Scenes/HeartLevel.unity
+>>>>>>> b0d408e24e3974f585c2c681751a1d7069a39d53
   isLoaded: 1
   isActive: 1
