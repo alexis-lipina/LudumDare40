@@ -54,14 +54,15 @@
      <Compile Include="Assets\Scripts\AttractCholesterol.cs" />
      <Compile Include="Assets\Scripts\CustomKeyBinding.cs" />
      <Compile Include="Assets\Scripts\MainMenu.cs" />
+     <Compile Include="Assets\Scripts\MenuButton.cs" />
      <Compile Include="Assets\Scripts\ScoreManager.cs" />
      <Compile Include="Assets\Scripts\ScreenWrapper.cs" />
+     <Compile Include="Assets\Scripts\Spawner.cs" />
      <Compile Include="Assets\Scripts\UIManager.cs" />
      <Compile Include="Assets\Scripts\VirusManager.cs" />
      <Compile Include="Assets\Scripts\VirusMovement.cs" />
      <Compile Include="Assets\Scripts\WallBehavior.cs" />
      <Compile Include="Assets\Scripts\WhiteBloodCell.cs" />
-     <Compile Include="Assets\Scripts\WhiteSpawner.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
