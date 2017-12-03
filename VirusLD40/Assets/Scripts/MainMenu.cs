@@ -14,7 +14,7 @@ public class MainMenu : MonoBehaviour
         button2.onClick.AddListener(LoadLevel2);
     }
 
-    private void LoadLevel1() { UnityEngine.SceneManagement.SceneManager.LoadScene("DavisTestScene"); }
-    private void LoadLevel2() { UnityEngine.SceneManagement.SceneManager.LoadScene("DaneTest"); }
+    private void LoadLevel1() { UnityEngine.SceneManagement.SceneManager.LoadScene("HeartLevel"); }
+    private void LoadLevel2() { UnityEngine.SceneManagement.SceneManager.LoadScene("Matthew"); }
 
 }
