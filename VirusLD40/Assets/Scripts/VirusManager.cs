@@ -176,8 +176,12 @@ public class VirusManager : MonoBehaviour
 
         Destroy(killedCell.gameObject);
 
-        //spawn a new red blood cell
-        System.Random rand = new System.Random();
-        Instantiate(redBloodCellPrefab, spawners[rand.Next(spawners.Count-1)]);
+        if (spawners.Count != 0)
+        {
+            //spawn a new red blood cell
+            System.Random rand = new System.Random();
+            Instantiate(redBloodCellPrefab, spawners[rand.Next(spawners.Count - 1)]);
+        }
+        
     }
 }
