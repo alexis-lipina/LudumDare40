@@ -330,6 +330,7 @@ MonoBehaviour:
   m_LastFolders:
   - Assets/Scripts
   m_LastFoldersGridSize: -1
+<<<<<<< HEAD
   m_LastProjectPath: Z:\IGMProfile\Desktop\repos\LudumDare40\VirusLD40
   m_IsLocked: 0
   m_FolderTreeState:
@@ -337,6 +338,15 @@ MonoBehaviour:
     m_SelectedIDs: 04280000
     m_LastClickedID: 10244
     m_ExpandedIDs: 00000000ee2600001627000000ca9a3bffffff7f
+=======
+  m_LastProjectPath: Z:\IGMProfile\Desktop\LudumDare40\VirusLD40
+  m_IsLocked: 0
+  m_FolderTreeState:
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 9c260000
+    m_LastClickedID: 9884
+    m_ExpandedIDs: 000000006c2500009425000000ca9a3bffffff7f
+>>>>>>> 7b5843d04ed9a342df2b664013041aee95b68680
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -364,7 +374,11 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
+<<<<<<< HEAD
     m_ExpandedIDs: 00000000ee26000016270000
+=======
+    m_ExpandedIDs: 000000006c25000094250000
+>>>>>>> 7b5843d04ed9a342df2b664013041aee95b68680
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -480,9 +494,15 @@ MonoBehaviour:
     height: 552
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
+<<<<<<< HEAD
     m_SelectedIDs: fc050000
     m_LastClickedID: 0
     m_ExpandedIDs: 94bfffffeec7ffffd0d1ffff14e0ffff2ae8ffff56f7ffff46f8ffff00000000dc3500004e370000
+=======
+    m_SelectedIDs: 
+    m_LastClickedID: 0
+    m_ExpandedIDs: ecfaffff00000000
+>>>>>>> 7b5843d04ed9a342df2b664013041aee95b68680
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -501,7 +521,11 @@ MonoBehaviour:
       m_ClientGUIView: {fileID: 0}
     m_SearchString: 
   m_ExpandedScenes:
+<<<<<<< HEAD
   - HeartLevel
+=======
+  - 
+>>>>>>> 7b5843d04ed9a342df2b664013041aee95b68680
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
@@ -566,9 +590,15 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
+<<<<<<< HEAD
     m_Target: 138.72055
     speed: 2
     m_Value: 138.72055
+=======
+    m_Target: 10
+    speed: 2
+    m_Value: 10
+>>>>>>> 7b5843d04ed9a342df2b664013041aee95b68680
   m_Ortho:
     m_Target: 1
     speed: 2
