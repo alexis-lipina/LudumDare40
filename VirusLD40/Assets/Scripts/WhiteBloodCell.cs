@@ -54,7 +54,7 @@ public class WhiteBloodCell : MonoBehaviour
             force.x = force.x / magnitude;
             force.y = force.y / magnitude;
             //apply force
-            rb.AddForce(force * speed);
+            rb.AddForce(force * speed, ForceMode2D.Impulse);
             Debug.DrawLine(transform.position, transform.position + force,Color.green);
         }
     }
