@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 sceneSetups:
 - path: Assets/Scenes/HeartLevel.unity
   isLoaded: 1
   isActive: 1
-=======
-sceneSetups: []
->>>>>>> 7b5843d04ed9a342df2b664013041aee95b68680

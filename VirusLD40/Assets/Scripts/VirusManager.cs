@@ -9,6 +9,7 @@ public class VirusManager : MonoBehaviour
 {
     [SerializeField] private List<Transform> spawners;
     [SerializeField] private GameObject redBloodCellPrefab;
+    System.Random rand = new System.Random();
 
     private int score;
 
@@ -188,7 +189,6 @@ public class VirusManager : MonoBehaviour
         if (spawners.Count != 0)
         {
             //spawn a new red blood cell
-            System.Random rand = new System.Random();
             Instantiate(redBloodCellPrefab, spawners[rand.Next(spawners.Count - 1)]);
         }
         
