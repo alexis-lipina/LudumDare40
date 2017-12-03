@@ -125,19 +125,12 @@ public class VirusManager : MonoBehaviour
             }
         }
         viruses[viruses.Count - 1].GetComponentInChildren<SpriteRenderer>().sprite = sprite;
-
-
-
-
-
-
-        List<int> usedControlIndices = new List<int>();
+        
+        //creates a list of which control schemes are in use
+        List<bool> usedControlIndices = new List<bool>();
         for(int i = 0; i < possibleControlSchemes.Count; i++)
         {
-            if (possibleControlSchemes[i].InUse)
-            {
-                usedControlIndices.Add(i);
-            }
+            usedControlIndices.Add(possibleControlSchemes[i].InUse);
         }
 
         //do a thing with ui manager here

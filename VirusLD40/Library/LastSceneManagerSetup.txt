@@ -1,16 +1,1 @@
-sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/HeartLevel.unity
-=======
-<<<<<<< HEAD
-- path: Assets/Scenes/ItsYaBoiMarkAndHisBeautifulUITestingScene.unity
-=======
-<<<<<<< HEAD
-- path: Assets/Scenes/NewTest.unity
-=======
-- path: Assets/Scenes/Matthew.unity
->>>>>>> 1687b69a3076ca55c9cfaa70adc1e95bf0b663c4
->>>>>>> ddc049f9c019a83afa15adeb58b49e8cc81a1814
->>>>>>> 7a1ece07d1dc5f642305f5da5f1ec3b0d2bfc262
-  isLoaded: 1
-  isActive: 1
+sceneSetups: []
