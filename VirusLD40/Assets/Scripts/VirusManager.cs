@@ -7,6 +7,9 @@ using UnityEngine;
 /// </summary>
 public class VirusManager : MonoBehaviour
 {
+    [SerializeField] Canvas canvas;
+    private UIManager uiManager;
+
     [SerializeField] private List<Transform> spawners;
     [SerializeField] private GameObject redBloodCellPrefab;
     System.Random rand = new System.Random();
@@ -72,6 +75,8 @@ public class VirusManager : MonoBehaviour
         possibleControlSchemes[0].InUse = true;
 
         InvokeRepeating("IncrementScore", .0f, 1);
+
+        uiManager = canvas.GetComponent<UIManager>(); 
     }
 
     private void IncrementScore()
@@ -133,8 +138,7 @@ public class VirusManager : MonoBehaviour
         {
             usedControlIndices.Add(possibleControlSchemes[i].InUse);
         }
-
-        //do a thing with ui manager here
+        uiManager.UpdateUI(usedControlIndices);
     }
 
     /// <summary>
@@ -191,6 +195,13 @@ public class VirusManager : MonoBehaviour
             //spawn a new red blood cell
             Instantiate(redBloodCellPrefab, spawners[rand.Next(spawners.Count - 1)]);
         }
-        
+
+        //creates a list of which control schemes are in use
+        List<bool> usedControlIndices = new List<bool>();
+        for (int i = 0; i < possibleControlSchemes.Count; i++)
+        {
+            usedControlIndices.Add(possibleControlSchemes[i].InUse);
+        }
+        uiManager.UpdateUI(usedControlIndices);
     }
 }
