@@ -23,10 +23,10 @@ public class VirusManager : MonoBehaviour
         new CustomKeyBinding(KeyCode.W, KeyCode.S, KeyCode.A, KeyCode.D, false),
         new CustomKeyBinding(KeyCode.Y, KeyCode.H, KeyCode.G, KeyCode.J, false),
         new CustomKeyBinding(KeyCode.P, KeyCode.Semicolon, KeyCode.L, KeyCode.Quote, false),
-        new CustomKeyBinding(KeyCode.F, KeyCode.V, KeyCode.C, KeyCode.B, false),
-        new CustomKeyBinding(KeyCode.K, KeyCode.Comma, KeyCode.M, KeyCode.Period, false),
         new CustomKeyBinding(KeyCode.Alpha4, KeyCode.R, KeyCode.E, KeyCode.T, false),
         new CustomKeyBinding(KeyCode.Alpha8, KeyCode.I, KeyCode.U, KeyCode.O, false),
+        new CustomKeyBinding(KeyCode.F, KeyCode.V, KeyCode.C, KeyCode.B, false),
+        new CustomKeyBinding(KeyCode.K, KeyCode.Comma, KeyCode.M, KeyCode.Period, false),
         new CustomKeyBinding(KeyCode.Equals, KeyCode.RightBracket, KeyCode.LeftBracket, KeyCode.Backslash, false),
         new CustomKeyBinding(KeyCode.F1, KeyCode.Alpha2, KeyCode.Alpha1, KeyCode.Alpha3, false),
         new CustomKeyBinding(KeyCode.F4, KeyCode.Alpha6, KeyCode.Alpha5, KeyCode.Alpha7, false),
@@ -63,13 +63,17 @@ public class VirusManager : MonoBehaviour
             }
         }
 
+        viruses[0].Init(possibleControlSchemes[0]);
+
         //assigns starting controls
-        for (int i = 0; i < possibleVirusSprites.Count; i++)
+        for (int i = 1; i < possibleVirusSprites.Count; i++)
         {
             if (possibleVirusSprites[i].inUse == false)
             {
-                viruses[i].Controls = possibleControlSchemes[i];
+                viruses[i].gameObject.SetActive(true);
+                viruses[i].Init(possibleControlSchemes[i]);
                 possibleControlSchemes[i].InUse = true;
+                viruses[i].gameObject.SetActive(false);
             }
         }
 
@@ -90,19 +94,9 @@ public class VirusManager : MonoBehaviour
     /// </summary>
     public void CreateVirus(Vector3 position)
     {
-
-        //checks if there are enough viruses to instantly end the game
-        int activeViruses = 0;
-        for (int i = 0; i < viruses.Count; i++)
+        if (viruses[12].gameObject.activeInHierarchy)
         {
-            if (viruses[i].gameObject.activeInHierarchy)
-            {
-                activeViruses++;
-            }
-        }
-        if(activeViruses == 0)
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu"); 
+            UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
             //*******************************************************************Change to you win screen
             return;
         }
@@ -114,6 +108,7 @@ public class VirusManager : MonoBehaviour
             {
                 viruses[i].gameObject.SetActive(true);
                 viruses[i].transform.position = position;
+                viruses[i].Init(possibleControlSchemes[i]);
                 i = viruses.Count;
             }
         }
