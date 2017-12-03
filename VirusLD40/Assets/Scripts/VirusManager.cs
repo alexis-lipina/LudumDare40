@@ -7,8 +7,12 @@ using UnityEngine;
 /// </summary>
 public class VirusManager : MonoBehaviour
 {
+    [SerializeField] Canvas canvas;
+    private UIManager uiManager;
+
     [SerializeField] private List<Transform> spawners;
     [SerializeField] private GameObject redBloodCellPrefab;
+    System.Random rand = new System.Random();
 
     private int score;
 
@@ -38,7 +42,7 @@ public class VirusManager : MonoBehaviour
     }
     [SerializeField] List<ListWrapper> possibleVirusSprites;
 
-    List<VirusMovement> viruses;
+    [SerializeField] List<VirusMovement> viruses;
 
     [SerializeField] GameObject virusPrefab;
 
@@ -49,28 +53,31 @@ public class VirusManager : MonoBehaviour
     {
         score = 0;
 
-        //creates starting virus
-        viruses = new List<VirusMovement>();
-        viruses.Add(Instantiate(virusPrefab).GetComponent<VirusMovement>());
-
         //sets color to an unused color
-        Sprite sprite = null;
         for(int i = 0; i < possibleVirusSprites.Count; i++)
         {
             if(possibleVirusSprites[i].inUse == false)
             {
-                sprite = possibleVirusSprites[i].sprite;
+                viruses[i].GetComponentInChildren<SpriteRenderer>().sprite = possibleVirusSprites[i].sprite;
                 possibleVirusSprites[i].inUse = true;
-                i = possibleVirusSprites.Count;
             }
         }
-        viruses[0].GetComponentInChildren<SpriteRenderer>().sprite = sprite;
 
         //assigns starting controls
-        viruses[0].Init(possibleControlSchemes[0]);
-        possibleControlSchemes[0].InUse = true;
+        for (int i = 0; i < possibleVirusSprites.Count; i++)
+        {
+            if (possibleVirusSprites[i].inUse == false)
+            {
+                viruses[i].Controls = possibleControlSchemes[i];
+                possibleVirusSprites[i].inUse = true;
+            }
+        }
+
+        viruses[0].transform.position = Vector3.zero;
 
         InvokeRepeating("IncrementScore", .0f, 1);
+
+        uiManager = canvas.GetComponent<UIManager>(); 
     }
 
     private void IncrementScore()
@@ -78,62 +85,46 @@ public class VirusManager : MonoBehaviour
         score += viruses.Count;
     }
 
-    //private void Update()
-    //{
-    //    score += viruses.Count;
-    //}
-
     /// <summary>
     /// Creates a new virus
     /// </summary>
     public void CreateVirus(Vector3 position)
     {
+
         //checks if there are enough viruses to instantly end the game
-        if (viruses.Count == possibleControlSchemes.Count)
+        int activeViruses = 0;
+        for (int i = 0; i < viruses.Count; i++)
         {
-            viruses.Add(Instantiate(virusPrefab, position, Quaternion.identity).GetComponent<VirusMovement>());
-            viruses[viruses.Count - 1].GetComponentInChildren<SpriteRenderer>().sprite = possibleVirusSprites[possibleVirusSprites.Count - 1].sprite;
-            UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu"); //*******************************************************************Change to you win screen
+            if (viruses[i].gameObject.activeInHierarchy)
+            {
+                activeViruses++;
+            }
+        }
+        if(activeViruses == 0)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu"); 
+            //*******************************************************************Change to you win screen
             return;
         }
 
         //creates new virus
-        viruses.Add(Instantiate(virusPrefab, position, Quaternion.identity).GetComponent<VirusMovement>());
-
-        //sets control scheme to first unused control scheme
-        int controlIndex = - 1;
-        for(int i = 0; i < possibleControlSchemes.Count; i++)
+        for (int i = 0; i < viruses.Count; i++)
         {
-            if(possibleControlSchemes[i].InUse == false)
+            if (!viruses[i].gameObject.activeInHierarchy)
             {
-                controlIndex = i;
-                i = possibleControlSchemes.Count;
+                viruses[i].gameObject.SetActive(true);
+                viruses[i].transform.position = position;
+                i = viruses.Count;
             }
         }
-        viruses[viruses.Count - 1].Init(possibleControlSchemes[controlIndex]);
-        possibleControlSchemes[controlIndex].InUse = true;
 
-        //sets color to an unused color
-        Sprite sprite = null;
-        for (int i = 0; i < possibleVirusSprites.Count; i++)
-        {
-            if (possibleVirusSprites[i].inUse == false)
-            {
-                sprite = possibleVirusSprites[i].sprite;
-                possibleVirusSprites[i].inUse = true;
-                i = possibleVirusSprites.Count;
-            }
-        }
-        viruses[viruses.Count - 1].GetComponentInChildren<SpriteRenderer>().sprite = sprite;
-        
         //creates a list of which control schemes are in use
         List<bool> usedControlIndices = new List<bool>();
-        for(int i = 0; i < possibleControlSchemes.Count; i++)
+        for(int i = 0; i < viruses.Count; i++)
         {
-            usedControlIndices.Add(possibleControlSchemes[i].InUse);
+            usedControlIndices.Add(viruses[i].gameObject.activeInHierarchy);
         }
-
-        //do a thing with ui manager here
+        uiManager.UpdateUI(usedControlIndices);
     }
 
     /// <summary>
@@ -142,55 +133,57 @@ public class VirusManager : MonoBehaviour
     /// <param name="destroyed">The virus that was destroyed</param>
     public void VirusDestroyed(VirusMovement killedCell)
     {
+        int index = 0;
+        int activeViruses = 0;
+        for(int i = 0; i < viruses.Count; i++)
+        {
+            if(viruses[i] == killedCell)
+            {
+                index = i;
+                //i = viruses.Count;
+            }
+            if (viruses[i].gameObject.activeInHierarchy)
+            {
+                activeViruses++;
+            }
+        }
+
+        score -= score / (activeViruses * 2);
+
+        possibleControlSchemes[index].InUse = false;
+
+        viruses[index].gameObject.SetActive(false);
         //removes destroyed viruses
-        viruses.Remove(killedCell);
+        //viruses.Remove(killedCell);
 
         //ends game if player is out of viruses
-        if(viruses.Count <= 0)
+        int activeVirusCount = 0;
+        for (int i = 0; i < viruses.Count; i++)
         {
-            Destroy(killedCell.gameObject);
-            UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu"); //************************************Change to game over screen
-            return;
-        }
-
-        //lose points when viruses are destroyed
-        score -= score / ((viruses.Count + 1) * 2);
-
-
-        //at this point the player has won so don't mess with it
-        if (viruses.Count > possibleControlSchemes.Count)
-        {
-            return;
-        }
-
-        //finds the binding that is no longer in use and marks it as such
-        for (int i = 0; i < possibleControlSchemes.Count; i++)
-        {
-            if (possibleControlSchemes[i] == killedCell.Controls)
+            if (viruses[i].gameObject.activeInHierarchy)
             {
-                possibleControlSchemes[i].InUse = false;
-                i = possibleControlSchemes.Count;
+                activeVirusCount++;
             }
         }
-
-        //finds the sprite that is no longer in use and marks it as such
-        for(int i = 0; i < possibleVirusSprites.Count; i++)
+        if (activeVirusCount == 0)
         {
-            if(possibleVirusSprites[i].sprite == killedCell.GetComponentInChildren<SpriteRenderer>().sprite)
-            {
-                possibleVirusSprites[i].inUse = false;
-                i = possibleVirusSprites.Count;
-            }
+            UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+            //*******************************************************************Change to you win screen
+            return;
         }
-
-        Destroy(killedCell.gameObject);
 
         if (spawners.Count != 0)
         {
             //spawn a new red blood cell
-            System.Random rand = new System.Random();
             Instantiate(redBloodCellPrefab, spawners[rand.Next(spawners.Count - 1)]);
         }
-        
+
+        //creates a list of which control schemes are in use
+        List<bool> usedControlIndices = new List<bool>();
+        for (int i = 0; i < possibleControlSchemes.Count; i++)
+        {
+            usedControlIndices.Add(possibleControlSchemes[i].InUse);
+        }
+        uiManager.UpdateUI(usedControlIndices);
     }
 }
