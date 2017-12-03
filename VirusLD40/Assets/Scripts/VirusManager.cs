@@ -66,12 +66,19 @@ public class VirusManager : MonoBehaviour
         //assigns starting controls
         viruses[0].Init(possibleControlSchemes[0]);
         possibleControlSchemes[0].InUse = true;
+
+        InvokeRepeating("IncrementScore", .0f, 1);
     }
 
-    private void Update()
+    private void IncrementScore()
     {
         score += viruses.Count;
     }
+
+    //private void Update()
+    //{
+    //    score += viruses.Count;
+    //}
 
     /// <summary>
     /// Creates a new virus
