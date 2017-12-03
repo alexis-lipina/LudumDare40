@@ -14,7 +14,8 @@ public class Spawner : MonoBehaviour {
 
     public void Awake()
     {
-        spawnLocations = new List<Transform>((GetComponentsInChildren<Transform>()));
+        spawnLocations = new List<Transform>(GetComponentsInChildren<Transform>());
+        spawnLocations.Remove(transform);
         InvokeRepeating("SpawnWhite", initialSpawnTime, spawnTime);
     }
 
